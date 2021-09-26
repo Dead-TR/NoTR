@@ -26,7 +26,6 @@ export const Page = () => {
           </Switch>
         </Router>
       </main>
-      <footer></footer>
     </>
   );
 };

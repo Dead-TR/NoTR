@@ -1,0 +1,31 @@
+@import "/src/sass/index";
+
+.BurgerMenu_root {
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.BurgerMenu_line {
+  background: black;
+  height: 2px;
+  width: 100%;
+
+  transform-origin: top left;
+  transition: transform $transition-time;
+
+  &__first-line-opened {
+    transform: rotate(45deg) scaleX(1);
+  }
+  &__second-line-opened {
+    transform: scaleX(0);
+  }
+  &__third-line-opened {
+    transform: rotate(-45deg) scaleX(1);
+    transform-origin: bottom left;
+  }
+}

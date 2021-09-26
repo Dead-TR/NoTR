@@ -1,12 +1,21 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Page } from "..";
-import { Header } from "../../components";
+import { Header, SideBar } from "../../sections";
 
 export const Layout: FC = () => {
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   return (
     <div>
-      <Header />
-      <Page />
+      <Header
+        {...{
+          isSideBarOpen,
+          setIsSideBarOpen,
+        }}
+      />
+      <div>
+        <SideBar />
+        <Page />
+      </div>
     </div>
   );
 };
