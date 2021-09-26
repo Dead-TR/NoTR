@@ -1,5 +1,8 @@
 import React, { FC } from "react";
+
 import { BurgerMenu } from "../../components";
+import { UserMenu } from "./components";
+import "./style.scss";
 
 interface Props {
   isSideBarOpen: boolean;
@@ -8,14 +11,16 @@ interface Props {
 
 export const Header: FC<Props> = ({ isSideBarOpen, setIsSideBarOpen }) => {
   return (
-    <header>
+    <header className="header">
+      <BurgerMenu
+        {...{
+          isOpen: isSideBarOpen,
+          setOpen: setIsSideBarOpen,
+        }}
+      />
+
       <div>
-        <BurgerMenu
-          {...{
-            isOpen: isSideBarOpen,
-            setOpen: setIsSideBarOpen,
-          }}
-        />
+        <UserMenu />
       </div>
     </header>
   );

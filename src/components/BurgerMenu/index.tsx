@@ -28,7 +28,7 @@ export const BurgerMenu: FC<Props> = ({
     setOpen(!isOpen);
   };
   return (
-    <div className={clsx("BurgerMenu_root", className)} onClick={changeOpen}>
+    <button className={clsx("BurgerMenu_root", className)} onClick={changeOpen}>
       <div
         className={clsx(
           "BurgerMenu_line",
@@ -50,6 +50,6 @@ export const BurgerMenu: FC<Props> = ({
         )}
         style={lineStyle}
       />
-    </div>
+    </button>
   );
 };

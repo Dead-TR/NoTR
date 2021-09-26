@@ -1,0 +1,70 @@
+@import "/src/sass/index";
+
+@keyframes weave {
+  0% {
+    transform: scale(0);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(100);
+  }
+}
+
+.Button {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid $main-functional-color;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.4rem;
+  background: transparent;
+  color: $main-functional-color;
+
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1.6rem;
+
+  vertical-align: middle;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+
+  user-select: none;
+  outline: none;
+
+  transition: color $transition-time ease-in-out,
+    background-color $transition-time ease-in-out,
+    border-color $transition-time ease-in-out,
+    box-shadow $transition-time ease-in-out;
+
+  &:hover,
+  &:active {
+    color: $second-functional-color;
+    background: $main-functional-color;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.4rem rgba(13, 110, 253, 0.5);
+  }
+
+  &__upperCase {
+    text-transform: uppercase;
+  }
+
+  &_waveAnimation {
+    position: absolute;
+    background: black;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+
+    &__play {
+      animation: weave 0.7s ease-in-out backwards;
+    }
+  }
+}

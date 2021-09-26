@@ -1,0 +1,22 @@
+.UserMenu {
+  margin: 0.5rem;
+  &_content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &_avatar {
+    max-width: 30px;
+    max-height: 30px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    background: cadetblue;
+    object-fit: cover;
+  }
+  &_name {
+  }
+  &_login-button {
+  }
+}
