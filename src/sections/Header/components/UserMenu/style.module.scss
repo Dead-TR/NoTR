@@ -1,3 +1,5 @@
+@import "/src/sass/index";
+
 .UserMenu {
   margin: 0.5rem;
   &_content-wrapper {
@@ -14,6 +16,11 @@
     border-radius: 50%;
     background: cadetblue;
     object-fit: cover;
+    opacity: 1;
+    transition: opacity $transition-time;
+    &__disable {
+      opacity: 0;
+    }
   }
   &_name {
   }
