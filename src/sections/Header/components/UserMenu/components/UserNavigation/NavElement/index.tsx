@@ -1,7 +1,9 @@
 import React, { FC, useCallback, useEffect } from "react";
-import { Button, Img } from "../../../../../../../components";
-import { buttonWeaveAnimation } from "../../../../../../../components/Button";
-import { createTimeouts } from "../../../../../../../utils";
+import { Img } from "components";
+import { createTimeouts } from "utils";
+
+import { buttonWeaveAnimation, Button } from "components/Button";
+
 import css from "./style.module.scss";
 
 interface Props {

@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React, { FC, useEffect, useMemo, useRef, useState } from "react";
-import { PopUpWrapper } from "..";
-import { createGuard } from "../../utils";
+import { PopUpWrapper } from "pop-ups";
+import { createGuard } from "utils";
 import css from "./style.module.scss";
 
 interface Props {

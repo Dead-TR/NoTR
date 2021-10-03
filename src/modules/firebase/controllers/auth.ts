@@ -1,6 +1,7 @@
 import { GoogleAuthProvider, signInWithPopup, User } from "@firebase/auth";
+import { createGuard } from "utils";
+
 import { firebaseAuth, googleAuthProvider } from "..";
-import { createGuard } from "../../../utils";
 import { AuthStatus } from "../types";
 
 export const authFromGoogle = async () => {

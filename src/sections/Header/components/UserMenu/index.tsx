@@ -1,6 +1,7 @@
 import { MouseEvent, useCallback, useRef, useState } from "react";
-import { Button, Img } from "../../../../components";
-import { useUser } from "../../../../providers";
+import { Button, Img } from "components";
+import { useUser } from "providers";
+
 import { UserNavigation } from "./components";
 import css from "./style.module.scss";
 

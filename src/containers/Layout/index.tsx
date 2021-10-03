@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
+import { Header, SideBar } from "sections";
 import { Page } from "..";
-import { Header, SideBar } from "../../sections";
 
 export const Layout: FC = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);

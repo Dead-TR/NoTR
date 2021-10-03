@@ -8,8 +8,9 @@ import {
 } from "react";
 import clsx from "clsx";
 
+import { createTimeouts, throttle } from "utils";
+
 import css from "./style.module.scss";
-import { createTimeouts, throttle } from "../../utils";
 
 export const buttonWeaveAnimation = 700;
 

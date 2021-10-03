@@ -7,8 +7,9 @@ import React, {
   useState,
 } from "react";
 import clsx from "clsx";
+
 import css from "./style.module.scss";
-import { useListeners } from "../../hooks";
+import { useListeners } from "hooks";
 
 interface Props extends ImgHTMLAttributes<HTMLImageElement> {}
 const listeners: (keyof WindowEventMap)[] = [

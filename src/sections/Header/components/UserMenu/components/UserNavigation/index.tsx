@@ -1,10 +1,13 @@
 import React, { FC, useCallback, useEffect } from "react";
-import { Img } from "../../../../../../components";
-import { PopUpMenu } from "../../../../../../pop-ups";
-import { useUser } from "../../../../../../providers";
-import NavElement from "./NavElement";
+
+import { PopUpMenu } from "pop-ups";
+import { useUser } from "providers";
+import { Img } from "components";
+
+import logOutIconUrl from "assets/icons/log-out.svg";
+
 import css from "./style.module.scss";
-import logOutIconUrl from "../../../../../../assets/icons/log-out.svg";
+import NavElement from "./NavElement";
 
 interface Props {
   anchor?: HTMLElement | Element | null;

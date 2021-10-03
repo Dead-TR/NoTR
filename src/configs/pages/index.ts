@@ -1,4 +1,4 @@
-import { ErrorPage, Main, Notes } from "../../pages";
+import { ErrorPage, Main, Notes } from "pages";
 import { PageList } from "./types";
 
 export const appPageList: PageList[] = [

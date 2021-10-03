@@ -1,11 +1,13 @@
-import { User } from "@firebase/auth";
 import { FC, useCallback, useContext, useEffect, useState } from "react";
+import { User } from "@firebase/auth";
+
 import {
   fireBaseAuth,
   getAuthResult,
   getLogOut,
-} from "../../modules/firebase/controllers/auth";
-import { AuthStatus } from "../../modules/firebase/types";
+} from "modules/firebase/controllers/auth";
+import { AuthStatus } from "modules/firebase/types";
+
 import { UserContext } from "./context";
 
 export const UserContextProvider: FC = ({ children }) => {

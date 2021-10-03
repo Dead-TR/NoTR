@@ -4,8 +4,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-
-import { appPageList } from "../../configs/pages";
+import { appPageList } from "configs/pages";
 
 export const Page = () => {
   return (

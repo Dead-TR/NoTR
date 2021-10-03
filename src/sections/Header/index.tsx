@@ -1,6 +1,6 @@
 import React, { FC } from "react";
+import { BurgerMenu } from "components";
 
-import { BurgerMenu } from "../../components";
 import { UserMenu } from "./components";
 import "./style.scss";
 
