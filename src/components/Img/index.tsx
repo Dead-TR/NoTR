@@ -2,6 +2,7 @@ import React, {
   FC,
   ImgHTMLAttributes,
   SyntheticEvent,
+  useCallback,
   useRef,
   useState,
 } from "react";
@@ -21,25 +22,29 @@ export const Img: FC<Props> = ({ src, alt, className, onLoad, ...props }) => {
   const [disabled, setDisabled] = useState(true);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  const customOnLoad = (event: SyntheticEvent<HTMLImageElement, Event>) => {
-    onLoad && onLoad(event);
-    setDisabled(false);
-  };
+  const customOnLoad = useCallback(
+    (event: SyntheticEvent<HTMLImageElement, Event>) => {
+      onLoad && onLoad(event);
+      setDisabled(false);
+    },
+    [onLoad]
+  );
 
   useListeners(
     listeners,
     () => {
-      const img = imgRef.current;
+      const imgCoordinates = imgRef.current?.getBoundingClientRect();
       if (
-        img &&
-        img.offsetTop < window.innerHeight + window.pageYOffset &&
-        img.offsetLeft < window.innerWidth + window.pageXOffset &&
-        img.offsetLeft > 0
+        imgCoordinates &&
+        imgCoordinates.top >= 0 &&
+        imgCoordinates.top <= window.innerHeight + window.pageYOffset &&
+        imgCoordinates.left <= window.innerWidth + window.pageXOffset &&
+        imgCoordinates.left >= 0
       ) {
         setSrcUrl(src || "");
       }
     },
-    [imgRef]
+    [imgRef, src]
   );
   return (
     <img

@@ -1,0 +1,35 @@
+@import "/src/sass/index";
+$lineOpacity: 0.3;
+
+.root {
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 0;
+
+  display: flex;
+  align-items: center;
+
+  border: none !important;
+  border-bottom: 1px solid rgba($main-functional-color, $lineOpacity) !important;
+
+  box-shadow: none !important;
+  background: none !important;
+
+  &:last-child {
+    border-bottom: none !important;
+  }
+}
+
+.img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.text {
+  margin: 10px 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $main-functional-color;
+}

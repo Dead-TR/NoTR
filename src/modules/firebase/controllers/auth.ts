@@ -13,7 +13,6 @@ export const authFromGoogle = async () => {
       const token = credential?.accessToken;
       // The signed-in user info.
       const user = result.user;
-      console.log("🚀 ~~ user", user);
       return user;
     })
     .catch((error) => {
@@ -29,22 +28,21 @@ export const authFromGoogle = async () => {
     });
 };
 
-export const getAuthResult = async (
-  middleware: (user: User) => void,
-  reAuth?: boolean
-) => {
+export const getAuthResult = async (middleware: (user: User) => void) => {
   firebaseAuth.onAuthStateChanged(async (user) => {
     if (user) {
       middleware(user);
-    } else if (reAuth) {
-      const user = await authFromGoogle();
-      const guard = createGuard<User>("displayName");
-
-      if (guard(user)) {
-        middleware(user);
-      }
     }
   });
+};
+
+export const fireBaseAuth = async (middleware: (user: User) => void) => {
+  const user = await authFromGoogle();
+  const guard = createGuard<User>("displayName");
+
+  if (guard(user)) {
+    middleware(user);
+  }
 };
 
 export const getLogOut = async (

@@ -11,6 +11,8 @@ import clsx from "clsx";
 import css from "./style.module.scss";
 import { createTimeouts, throttle } from "../../utils";
 
+export const buttonWeaveAnimation = 700;
+
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   upperCase?: boolean;
 }
@@ -52,9 +54,10 @@ export const Button: FC<Props> = ({
     const { clientX, clientY, currentTarget } = event;
 
     pushTimeout(() => {
+      const targetRect = currentTarget.getBoundingClientRect();
       setClickAnimation({
-        x: clientX - currentTarget.offsetLeft,
-        y: clientY - currentTarget.offsetTop,
+        x: clientX - targetRect.left,
+        y: clientY - targetRect.top,
       });
     });
   };

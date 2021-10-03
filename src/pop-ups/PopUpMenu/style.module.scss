@@ -1,0 +1,33 @@
+@keyframes openAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes closeAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.root {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.open {
+  animation: openAnimation 0.25s ease-out forwards;
+}
+
+.close {
+  animation: closeAnimation 0.25s ease-out forwards;
+}
