@@ -1,0 +1,17 @@
+@import "sass/index";
+$avatarSize: 30px;
+
+.user {
+  display: flex;
+  align-items: center;
+
+  &_avatar {
+    width: $avatarSize;
+    height: $avatarSize;
+    border-radius: 50%;
+  }
+  &_name {
+    white-space: nowrap;
+    margin-left: 10px;
+  }
+}

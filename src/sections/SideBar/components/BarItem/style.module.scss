@@ -1,0 +1,31 @@
+@import "sass/index";
+
+$navImgSize: 20px;
+
+.root {
+  padding: 5px;
+  margin: 2px 0;
+  display: flex;
+  align-items: center;
+  color: $main-functional-color;
+  text-decoration: none;
+  border-radius: 4px;
+
+  transition: background $transition-time, color $transition-time;
+
+  &_img {
+    width: $navImgSize;
+    height: $navImgSize;
+    margin-right: 5px;
+  }
+  &_name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  &__selected {
+    background: $main-functional-color;
+    color: $second-functional-color;
+  }
+}

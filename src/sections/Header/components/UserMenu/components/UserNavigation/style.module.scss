@@ -1,7 +1,4 @@
-@import "/src/sass/index";
-
-$avatarSize: 30px;
-$lineOpacity: 0.3;
+@import "sass/index";
 
 .root {
   padding: 5px;
@@ -11,22 +8,7 @@ $lineOpacity: 0.3;
   border-radius: 5px;
 }
 
-.user {
-  display: flex;
-  align-items: center;
-
-  &_avatar {
-    width: $avatarSize;
-    height: $avatarSize;
-    border-radius: 50%;
-  }
-  &_name {
-    white-space: nowrap;
-    margin-left: 10px;
-  }
-}
-
 .navigation {
-  border-top: 1px solid rgba($main-functional-color, $lineOpacity);
+  border-top: $line;
   margin-top: 10px;
 }
