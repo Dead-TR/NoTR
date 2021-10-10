@@ -1,0 +1,22 @@
+.root {
+}
+
+.box {
+  margin-top: 10px;
+}
+
+.text {
+  margin-bottom: 3px;
+}
+
+.defaultColorsList {
+  display: flex;
+}
+
+.defaultColor {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  margin: 2px;
+}

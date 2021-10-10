@@ -48,6 +48,9 @@
   &:focus {
     box-shadow: 0 0 0 0.4rem rgba(13, 110, 253, 0.5);
   }
+  &__active {
+    border-bottom: 2px solid $main-functional-color;
+  }
 
   &__upperCase {
     text-transform: uppercase;

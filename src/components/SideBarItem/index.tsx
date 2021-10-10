@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
+import clsx from "clsx";
 
 import { Img } from "components";
 import css from "./style.module.scss";
-import clsx from "clsx";
 
 interface Props {
   name: string;
@@ -12,7 +12,7 @@ interface Props {
   img?: string;
 }
 
-export const BarItem: FC<Props> = ({ name, path, img }) => {
+export const SideBarItem: FC<Props> = ({ name, path, img }) => {
   const { pathname } = useLocation();
   return (
     <Link

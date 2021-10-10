@@ -1,0 +1,15 @@
+@import "sass/index";
+
+body {
+  color: $main-functional-color;
+}
+
+.App {
+  text-align: center;
+}
+
+p {
+  font-size: 1.4rem;
+  margin: 0;
+  color: inherit;
+}

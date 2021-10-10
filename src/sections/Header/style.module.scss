@@ -1,5 +1,9 @@
+@import "sass/index";
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  border-bottom: $line;
 }

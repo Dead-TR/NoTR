@@ -1,1 +1,0 @@
-export { BarItem } from "./BarItem";

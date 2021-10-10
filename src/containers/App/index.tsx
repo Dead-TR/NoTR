@@ -1,6 +1,6 @@
 import { Layout, Providers } from "..";
 
-import "./style.css";
+import "./style.scss";
 
 function App() {
   return (

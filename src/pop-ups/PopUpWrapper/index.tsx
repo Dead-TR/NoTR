@@ -3,17 +3,20 @@ import { createPortal } from "react-dom";
 import clsx from "clsx";
 import css from "./style.module.scss";
 
+export type PopUpFrameBackground = "transparent" | "dark";
+
 interface Props {
-  background?: "transparent" | "dark";
+  background?: PopUpFrameBackground;
   frameOnClick?: () => void;
 }
+
+const rootDom = document.getElementById("pop-up");
 
 export const PopUpWrapper: FC<Props> = ({
   children,
   background = "transparent",
   frameOnClick,
 }) => {
-  const rootDom = document.querySelector("#pop-up");
   const stopPropagation = useCallback((event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   }, []);

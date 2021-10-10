@@ -2,6 +2,6 @@ import { FC } from "react";
 
 export interface PageList {
   path: string;
-  component?: (() => JSX.Element) | FC | (() => FC);
+  component?: FC;
   redirect?: string;
 }

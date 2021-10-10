@@ -1,0 +1,44 @@
+@import "sass/index";
+
+.root {
+  background-clip: border-box;
+  position: relative;
+  word-wrap: break-word;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 4px;
+  width: 290px;
+  min-height: 200px;
+  margin: 5px;
+
+  text-align: left;
+  color: white;
+}
+.name {
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  font-size: 1.6rem;
+
+  &:first-child {
+    border-radius: 3px 3px 0 0;
+  }
+}
+.body {
+  flex: 1 1 auto;
+  padding: 20px;
+}
+.title {
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 2rem;
+  margin: 0;
+  margin-bottom: 12px;
+}
+.text {
+  margin: 0;
+  font-size: 1.6rem;
+}
