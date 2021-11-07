@@ -1,5 +1,8 @@
 @import "sass/index";
 
+$iconSize: 25px;
+$iconMargin: 10px;
+
 .root {
   background-clip: border-box;
   position: relative;
@@ -22,6 +25,9 @@
   background: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   font-size: 1.6rem;
+  min-height: 45px;
+
+  position: relative;
 
   &:first-child {
     border-radius: 3px 3px 0 0;
@@ -41,4 +47,15 @@
 .text {
   margin: 0;
   font-size: 1.6rem;
+}
+
+.deleteIcon {
+  width: $iconSize;
+  height: $iconSize;
+
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  cursor: pointer;
 }

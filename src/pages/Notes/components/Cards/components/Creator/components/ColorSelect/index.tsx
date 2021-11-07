@@ -5,7 +5,11 @@ import { DefaultCardColors } from "components/Card";
 
 import css from "./style.module.scss";
 
-interface Props {
+interface Props
+  extends Omit<
+    DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+    "onChange"
+  > {
   onChange: (v: string) => void;
 }
 interface ColorProps
@@ -20,9 +24,9 @@ const DefaultColor: FC<ColorProps> = ({ color, ...props }) => (
   <div className={css.defaultColor} style={{ background: color }} {...props} />
 );
 
-const ColorSelect: FC<Props> = ({ onChange }) => {
+const ColorSelect: FC<Props> = ({ onChange, ...props }) => {
   return (
-    <div className={css.root}>
+    <div className={css.root} {...props}>
       <div className={css.box}>
         <p className={css.text}>Select Color:</p>
         <div className={css.defaultColorsList}>

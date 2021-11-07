@@ -42,7 +42,7 @@ export const NotesContextProvider: FC = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem(localNotesName, JSON.stringify(notes.local));
-  }, [notes.local]);
+  }, [notes]);
 
   return (
     <NotesContext.Provider

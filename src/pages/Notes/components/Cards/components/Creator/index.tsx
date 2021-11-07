@@ -1,6 +1,9 @@
 import React, { ChangeEvent, FC, useState } from "react";
 import { Button, Card, Input } from "components";
+import { useWindowSize } from "hooks";
+
 import { NoteElement, useNotes } from "providers/NoteProvider";
+import closeURL from "assets/icons/close.svg";
 
 import ColorSelect from "./components/ColorSelect";
 import css from "./style.module.scss";
@@ -46,7 +49,6 @@ export const Creator: FC<Props> = ({ onClose }) => {
   };
 
   const handleCreateNote = (event: React.FormEvent<HTMLFormElement>) => {
-    debugger;
     event.preventDefault();
     addNote(cardData, "local");
     setTimeout(() => {
@@ -54,17 +56,51 @@ export const Creator: FC<Props> = ({ onClose }) => {
     }, 0);
   };
 
+  const { isMobile } = useWindowSize();
+
   return (
     <div className={css.root}>
+      <img
+        src={closeURL}
+        alt="Close"
+        className={css.closeIcon}
+        onClick={onClose}
+      />
       <form className={css.control} onSubmit={handleCreateNote}>
-        <Input label="Card Name" onChange={handleChangeName} required />
-        <Input label="Card Title" onChange={handleChangeTitle} required />
-        <Input label="Card Text" onChange={handleChangeText} required />
-        <ColorSelect onChange={handleChangeColor} />
+        <Input
+          classes={{
+            label: css.textLabel,
+          }}
+          label="Card Name"
+          placeholder={isMobile ? "Card Name" : ""}
+          onChange={handleChangeName}
+        />
+        <Input
+          classes={{
+            label: css.textLabel,
+          }}
+          label="Card Title"
+          placeholder={isMobile ? "Card Title" : ""}
+          onChange={handleChangeTitle}
+        />
+        <Input
+          classes={{
+            label: css.textLabel,
+          }}
+          label="Card Text"
+          placeholder={isMobile ? "Card Text" : ""}
+          onChange={handleChangeText}
+        />
+        <ColorSelect className={css.colorSelect} onChange={handleChangeColor} />
 
         <Button>Add card</Button>
       </form>
-      <Card {...cardData} />
+      <Card
+        {...cardData}
+        classes={{
+          root: css.card,
+        }}
+      />
     </div>
   );
 };

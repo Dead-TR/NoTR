@@ -1,17 +1,18 @@
+@import "sass/index";
+
 $padding: 5px;
+$closeIconSize: 25px;
 
 .root {
-  position: absolute;
-  top: 0;
-  left: 0;
-
   background: white;
-  width: 600px;
+  width: $mobile-screen-width;
   padding: $padding;
 
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
+  min-width: 300px;
 
   & > :last-child {
     min-width: 290px;
@@ -22,8 +23,65 @@ $padding: 5px;
 .control {
   width: 100%;
   margin-right: $padding;
+  padding-top: $padding + $closeIconSize;
 
   & > :nth-child(n) {
     margin-top: 10px;
+  }
+}
+
+.textLabel {
+}
+
+.colorSelect {
+}
+
+.card {
+  margin-top: $padding + $closeIconSize !important;
+}
+
+.closeIcon {
+  width: $closeIconSize;
+  height: $closeIconSize;
+
+  position: absolute;
+  right: 0;
+  z-index: 2;
+}
+
+@media (max-width: $mobile-screen-width) {
+  .card {
+    position: absolute;
+    max-height: 200px;
+
+    color: transparent;
+  }
+
+  .colorSelect {
+    margin-top: 50px !important;
+  }
+
+  .textLabel {
+    display: none;
+  }
+
+  .control {
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px;
+    padding-top: $padding * 2 + $closeIconSize;
+    z-index: 1;
+
+    & > :first-child {
+      margin-top: 0;
+      margin-bottom: 40px;
+    }
+  }
+
+  .root {
+    height: 100%;
+    width: 100%;
+
+    justify-content: center;
   }
 }

@@ -1,4 +1,8 @@
 import React, { FC } from "react";
+import clsx from "clsx";
+
+import closeURL from "assets/icons/close.svg";
+
 import css from "./style.module.scss";
 
 export enum DefaultCardColors {
@@ -16,6 +20,12 @@ interface Props {
   title: string;
   text: string;
   color?: DefaultCardColors | string;
+
+  classes?: {
+    root?: string;
+  };
+
+  deleteCard?: () => void;
 }
 
 export const Card: FC<Props> = ({
@@ -23,10 +33,25 @@ export const Card: FC<Props> = ({
   title,
   text,
   color = DefaultCardColors.blue,
+  classes,
+  deleteCard,
 }) => {
   return (
-    <div className={css.root} style={{ background: color }}>
-      <div className={css.name}>{name}</div>
+    <div
+      className={clsx(css.root, classes?.root)}
+      style={{ background: color }}
+    >
+      <div className={css.name}>
+        {name}
+        {!!deleteCard && (
+          <img
+            src={closeURL}
+            alt="Delete Card"
+            className={css.deleteIcon}
+            onClick={deleteCard}
+          />
+        )}
+      </div>
       <div className={css.body}>
         <h5 className={css.title}>{title}</h5>
         <p className={css.text}>{text}</p>

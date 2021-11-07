@@ -5,16 +5,24 @@ import { Card } from "components";
 import addIconUrl from "assets/icons/add.svg";
 import css from "./style.module.scss";
 import { Creator } from "./components";
-import { PopUpMenu } from "pop-ups";
+import { Modal } from "pop-ups";
 import { useNotes } from "providers/NoteProvider";
 
 export const Cards = () => {
-  const { notes } = useNotes();
+  const { notes, setNotes } = useNotes();
   const [creatorIsOpen, setCreatorIsOpen] = useState(false);
   const addButtonRef = useRef<HTMLButtonElement>(null);
 
   const closeCreator = () => setCreatorIsOpen(false);
   const openCreator = () => setCreatorIsOpen(true);
+
+  const deleteCard = (iterator: number) => {
+    if (iterator <= notes.local.length) {
+      notes.local.splice(iterator, 1);
+    }
+
+    setNotes({ ...notes });
+  };
 
   return (
     <div className={css.root}>
@@ -26,18 +34,13 @@ export const Cards = () => {
         <img src={addIconUrl} alt="add" className={css.addButton__img} />
       </button>
 
-      <PopUpMenu
-        isOpen={creatorIsOpen}
-        onClose={closeCreator}
-        anchor={addButtonRef.current}
-        background="dark"
-      >
+      <Modal isOpen={creatorIsOpen} onClose={closeCreator} background="dark">
         <Creator onClose={closeCreator} />
-      </PopUpMenu>
+      </Modal>
 
       <div className={css.cardWrapper}>
-        {notes.local.map((note) => {
-          return <Card {...note} />;
+        {notes.local.map((note, i) => {
+          return <Card {...note} deleteCard={() => deleteCard(i)} />;
         })}
       </div>
     </div>

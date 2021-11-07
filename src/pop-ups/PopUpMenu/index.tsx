@@ -1,8 +1,7 @@
 import clsx from "clsx";
 import React, { FC, useEffect, useMemo, useState } from "react";
-import { PopUpWrapper } from "pop-ups";
+import { PopUpFrameBackground, PopUpWrapper } from "pop-ups";
 import { createGuard } from "utils";
-import { PopUpFrameBackground } from "pop-ups/PopUpWrapper";
 
 import css from "./style.module.scss";
 
