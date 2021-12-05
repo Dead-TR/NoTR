@@ -1,3 +1,5 @@
-export const Main = () => {
+import { FC } from "react";
+
+export const Main: FC = () => {
   return <div>Main page</div>;
 };

@@ -16,6 +16,7 @@ export const buttonWeaveAnimation = 700;
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   upperCase?: boolean;
+  active?: boolean | { className: string };
 }
 
 interface ClickAnimation {
@@ -30,6 +31,7 @@ export const Button: FC<Props> = ({
   className,
   onClick,
   children,
+  active,
   ...props
 }) => {
   const [clickAnimation, setClickAnimation] = useState<ClickAnimation | null>(
@@ -68,7 +70,9 @@ export const Button: FC<Props> = ({
       className={clsx(
         className,
         css.Button,
-        upperCase && css.Button__upperCase
+        upperCase && css.Button__upperCase,
+        active && css.Button__active,
+        typeof active === "string" && active
       )}
       onClick={handleOnClick}
     >

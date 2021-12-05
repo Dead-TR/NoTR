@@ -1,0 +1,20 @@
+$img-size: 30px;
+
+.root {
+}
+.addButton {
+  background: transparent;
+  border: none;
+  display: block;
+  cursor: pointer;
+
+  &__img {
+    width: $img-size;
+    height: $img-size;
+  }
+}
+
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}

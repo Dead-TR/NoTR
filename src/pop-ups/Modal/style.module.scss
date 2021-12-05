@@ -1,0 +1,18 @@
+@import "sass/index";
+
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.paper {
+  @media (max-width: $mobile-screen-width) {
+    width: 100vw;
+    height: 100vh;
+  }
+}

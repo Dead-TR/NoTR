@@ -1,0 +1,16 @@
+$size: 20px;
+
+.root {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  margin: 2px;
+  position: relative;
+}
+
+.input {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}

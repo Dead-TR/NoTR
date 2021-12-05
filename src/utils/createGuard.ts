@@ -5,6 +5,8 @@ export function createGuard<Type>(checkedKey: string) {
     }
 
     //@ts-ignore
-    return !!(value as Type)[checkedKey];
+    const result = (value as Type)[checkedKey];
+
+    return !!result || result === 0;
   };
 }

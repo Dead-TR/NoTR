@@ -1,4 +1,4 @@
-import { FC, useCallback, useContext, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { User } from "@firebase/auth";
 
 import {
@@ -12,13 +12,14 @@ import { UserContext } from "./context";
 
 export const UserContextProvider: FC = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const checkAuth = useCallback(() => {
+  console.log("🚀 ~ file: index.tsx ~ line 15 ~ user", user);
+  const checkAuth = () => {
     getAuthResult((user) => setUser(user));
-  }, []);
+  };
   const logIn = () => {
     fireBaseAuth((user) => setUser(user));
   };
-  const logOut = useCallback(() => {
+  const logOut = () => {
     const deleteUser = () => setUser(null);
     const getMessage = (type: AuthStatus) => {
       console.log("log out status:", type);
@@ -28,11 +29,12 @@ export const UserContextProvider: FC = ({ children }) => {
     };
 
     getLogOut(deleteUser, getMessage);
-  }, []);
+  };
 
   useEffect(() => {
     checkAuth();
   }, []);
+
   return (
     <UserContext.Provider
       value={{
