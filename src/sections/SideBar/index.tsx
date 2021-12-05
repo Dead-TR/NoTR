@@ -8,11 +8,11 @@ import markUrl from "assets/icons/mark.svg";
 import css from "./style.module.scss";
 
 const navigation = [
-  {
-    path: "/main",
-    name: "Main",
-    img: markUrl,
-  },
+  // {
+  //   path: "/main",
+  //   name: "Main",
+  //   img: markUrl,
+  // },
   {
     path: "/notes",
     name: "Notes",
