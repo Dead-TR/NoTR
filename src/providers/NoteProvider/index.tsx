@@ -1,19 +1,24 @@
 import { FC, useContext, useEffect, useState } from "react";
 
-import { NotesContext } from "./context";
-import { useUser } from "providers";
+import { TabValue, useUser } from "providers";
 import { addNotesToCloud, getNotesFromCloud } from "modules";
+
+import { NotesContext } from "./context";
 import { Notes, NoteElement } from "./types";
-const localNotesName = "localNotes";
+import { LOCAL_NOTES_NAME } from "./consts";
 
 export const NotesContextProvider: FC = ({ children }) => {
   const { user } = useUser();
   const [notes, setNotes] = useState<Notes>({
     cloud: [],
-    local: [],
+    local: JSON.parse(
+      localStorage.getItem(LOCAL_NOTES_NAME) || "[]"
+    ) as NoteElement[],
+
+    isDataReceived: false,
   });
 
-  const addNote = (value: NoteElement, place: "local" | "cloud") => {
+  const addNote = (value: NoteElement, place: TabValue) => {
     setNotes({
       ...notes,
       [place]: [...notes[place], value],
@@ -21,40 +26,31 @@ export const NotesContextProvider: FC = ({ children }) => {
   };
 
   useEffect(() => {
-    const local = JSON.parse(
-      localStorage.getItem(localNotesName) || "[]"
-    ) as NoteElement[];
-
-    setNotes({
-      ...notes,
-      local,
-    });
-  }, []);
-
-  useEffect(() => {
-    const { cloud, local } = notes;
-    localStorage.setItem(localNotesName, JSON.stringify(local));
-
-    if (user) {
-      addNotesToCloud(user.uid, cloud);
-    } else {
-      setNotes({
-        ...notes,
-        cloud: [],
-      });
-    }
-  }, [notes]);
-
-  useEffect(() => {
     if (user) {
       getNotesFromCloud(user.uid, (cloud) => {
         setNotes({
           ...notes,
           cloud,
+          isDataReceived: true,
         });
+      });
+    } else {
+      setNotes({
+        ...notes,
+        cloud: [],
+        isDataReceived: false,
       });
     }
   }, [user]);
+
+  useEffect(() => {
+    const { cloud, local, isDataReceived } = notes;
+    localStorage.setItem(LOCAL_NOTES_NAME, JSON.stringify(local));
+
+    if (user && isDataReceived) {
+      addNotesToCloud(user.uid, cloud);
+    }
+  }, [notes]);
 
   return (
     <NotesContext.Provider

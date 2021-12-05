@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC, useState } from "react";
 
-import { NoteElement, Notes, useNotes } from "providers";
+import { NoteElement, Notes, TabValue, useNotes } from "providers";
 import { Button, Card, Input } from "components";
 import { useWindowSize } from "hooks";
 
@@ -11,7 +11,7 @@ import css from "./style.module.scss";
 
 interface Props {
   onClose: () => void;
-  activeTab: keyof Notes;
+  activeTab: TabValue;
 }
 
 export const Creator: FC<Props> = ({ onClose, activeTab }) => {

@@ -5,6 +5,7 @@ const defaultContext: NoteContext = {
   notes: {
     cloud: [],
     local: [],
+    isDataReceived: false,
   },
   setNotes: () => null,
   addNote: () => null,

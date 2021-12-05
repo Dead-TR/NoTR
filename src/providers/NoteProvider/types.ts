@@ -1,7 +1,8 @@
+export type TabValue = "local" | "cloud";
 export interface NoteContext {
   notes: Notes;
   setNotes: React.Dispatch<React.SetStateAction<Notes>>;
-  addNote: (value: NoteElement, place: keyof Notes) => void;
+  addNote: (value: NoteElement, place: TabValue) => void;
 }
 
 export interface NoteElement {
@@ -14,4 +15,5 @@ export interface NoteElement {
 export interface Notes {
   local: NoteElement[];
   cloud: NoteElement[];
+  isDataReceived: boolean;
 }

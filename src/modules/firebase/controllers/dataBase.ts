@@ -13,7 +13,6 @@ export const getNotesFromCloud = async (
 
   firebaseNoteData.forEach((v) => {
     const notes = v.data();
-    debugger;
 
     if (noteElementGuardian(notes)) {
       middleware(notes.list);

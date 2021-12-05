@@ -1,6 +1,6 @@
 import React, { FC, useRef, useState } from "react";
 
-import { Notes, useNotes } from "providers";
+import { TabValue, useNotes } from "providers";
 import { Card } from "components";
 import { Modal } from "pop-ups";
 
@@ -9,7 +9,7 @@ import { Creator } from "./components";
 import css from "./style.module.scss";
 
 interface Props {
-  activeTab: keyof Notes;
+  activeTab: TabValue;
 }
 
 export const Cards: FC<Props> = ({ activeTab }) => {
