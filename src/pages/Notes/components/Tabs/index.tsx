@@ -1,8 +1,10 @@
 import React, { FC } from "react";
+import clsx from "clsx";
+
 import { Button } from "components";
+import { useUser } from "providers";
 
 import css from "./style.module.scss";
-import clsx from "clsx";
 
 interface Props {
   tabList: string[];
@@ -11,17 +13,24 @@ interface Props {
 }
 
 export const Tabs: FC<Props> = ({ tabList, activeTab, changeActiveTab }) => {
+  const { user } = useUser();
   return (
     <div className={css.root}>
-      {tabList.map((item) => (
-        <Button
-          className={clsx(css.tab)}
-          active={item === activeTab}
-          onClick={() => changeActiveTab(item)}
-        >
-          {item}
-        </Button>
-      ))}
+      {tabList.map((item, i) => {
+        if (!user && i === 1) {
+          return null;
+        }
+
+        return (
+          <Button
+            className={clsx(css.tab)}
+            active={item === activeTab}
+            onClick={() => changeActiveTab(item)}
+          >
+            {item}
+          </Button>
+        );
+      })}
     </div>
   );
 };

@@ -12,6 +12,7 @@ import { UserContext } from "./context";
 
 export const UserContextProvider: FC = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  console.log("🚀 ~ file: index.tsx ~ line 15 ~ user", user);
   const checkAuth = () => {
     getAuthResult((user) => setUser(user));
   };
@@ -33,6 +34,7 @@ export const UserContextProvider: FC = ({ children }) => {
   useEffect(() => {
     checkAuth();
   }, []);
+
   return (
     <UserContext.Provider
       value={{

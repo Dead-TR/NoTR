@@ -1,11 +1,5 @@
 import { createContext } from "react";
-import { NoteElement, Notes } from ".";
-
-interface NoteContext {
-  notes: Notes;
-  setNotes: React.Dispatch<React.SetStateAction<Notes>>;
-  addNote: (value: NoteElement, place: keyof Notes) => void;
-}
+import { NoteContext } from "./types";
 
 const defaultContext: NoteContext = {
   notes: {

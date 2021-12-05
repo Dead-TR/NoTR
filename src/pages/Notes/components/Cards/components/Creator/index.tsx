@@ -1,8 +1,9 @@
 import React, { ChangeEvent, FC, useState } from "react";
+
+import { NoteElement, Notes, useNotes } from "providers";
 import { Button, Card, Input } from "components";
 import { useWindowSize } from "hooks";
 
-import { NoteElement, useNotes } from "providers/NoteProvider";
 import closeURL from "assets/icons/close.svg";
 
 import ColorSelect from "./components/ColorSelect";
@@ -10,9 +11,10 @@ import css from "./style.module.scss";
 
 interface Props {
   onClose: () => void;
+  activeTab: keyof Notes;
 }
 
-export const Creator: FC<Props> = ({ onClose }) => {
+export const Creator: FC<Props> = ({ onClose, activeTab }) => {
   const { addNote } = useNotes();
   const [cardData, setCardData] = useState<NoteElement>({
     name: "",
@@ -50,7 +52,7 @@ export const Creator: FC<Props> = ({ onClose }) => {
 
   const handleCreateNote = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    addNote(cardData, "local");
+    addNote(cardData, activeTab);
     setTimeout(() => {
       onClose();
     }, 0);

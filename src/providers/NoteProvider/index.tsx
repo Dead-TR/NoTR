@@ -1,22 +1,13 @@
 import { FC, useContext, useEffect, useState } from "react";
 
 import { NotesContext } from "./context";
-
-export interface NoteElement {
-  name: string;
-  title: string;
-  text: string;
-  color?: string;
-}
-
-export interface Notes {
-  local: NoteElement[];
-  cloud: NoteElement[];
-}
-
+import { useUser } from "providers";
+import { addNotesToCloud, getNotesFromCloud } from "modules";
+import { Notes, NoteElement } from "./types";
 const localNotesName = "localNotes";
 
 export const NotesContextProvider: FC = ({ children }) => {
+  const { user } = useUser();
   const [notes, setNotes] = useState<Notes>({
     cloud: [],
     local: [],
@@ -25,7 +16,7 @@ export const NotesContextProvider: FC = ({ children }) => {
   const addNote = (value: NoteElement, place: "local" | "cloud") => {
     setNotes({
       ...notes,
-      [place]: [...notes.local, value],
+      [place]: [...notes[place], value],
     });
   };
 
@@ -41,8 +32,29 @@ export const NotesContextProvider: FC = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(localNotesName, JSON.stringify(notes.local));
+    const { cloud, local } = notes;
+    localStorage.setItem(localNotesName, JSON.stringify(local));
+
+    if (user) {
+      addNotesToCloud(user.uid, cloud);
+    } else {
+      setNotes({
+        ...notes,
+        cloud: [],
+      });
+    }
   }, [notes]);
+
+  useEffect(() => {
+    if (user) {
+      getNotesFromCloud(user.uid, (cloud) => {
+        setNotes({
+          ...notes,
+          cloud,
+        });
+      });
+    }
+  }, [user]);
 
   return (
     <NotesContext.Provider

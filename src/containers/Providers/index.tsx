@@ -7,9 +7,9 @@ import { NotesContextProvider } from "providers/NoteProvider";
 export const Providers: FC = ({ children }) => {
   return (
     <BrowserRouter>
-      <NotesContextProvider>
-        <UserContextProvider>{children}</UserContextProvider>
-      </NotesContextProvider>
+      <UserContextProvider>
+        <NotesContextProvider>{children}</NotesContextProvider>
+      </UserContextProvider>
     </BrowserRouter>
   );
 };

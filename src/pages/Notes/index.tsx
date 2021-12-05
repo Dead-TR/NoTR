@@ -1,19 +1,22 @@
+import { useUser } from "providers";
 import React, { FC, useState } from "react";
 
 import { Cards, Tabs } from "./components";
 
-const tabList = ["Local", "Cloud"];
+export const tabList = ["Local", "Cloud"];
 
 export const Notes: FC = () => {
   const [activeTab, setActiveTab] = useState(tabList[0]);
+  const { user } = useUser();
   const changeActiveTab = (value: string) => {
-    setActiveTab(value);
+    const activeValue = user ? value : "Local";
+    setActiveTab(activeValue);
   };
 
   return (
     <div>
       <Tabs {...{ tabList, activeTab, changeActiveTab }} />
-      <Cards />
+      <Cards activeTab={activeTab === "Local" ? "local" : "cloud"} />
     </div>
   );
 };

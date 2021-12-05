@@ -1,14 +1,18 @@
-import React, { useRef, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 
+import { Notes, useNotes } from "providers";
 import { Card } from "components";
+import { Modal } from "pop-ups";
 
 import addIconUrl from "assets/icons/add.svg";
-import css from "./style.module.scss";
 import { Creator } from "./components";
-import { Modal } from "pop-ups";
-import { useNotes } from "providers/NoteProvider";
+import css from "./style.module.scss";
 
-export const Cards = () => {
+interface Props {
+  activeTab: keyof Notes;
+}
+
+export const Cards: FC<Props> = ({ activeTab }) => {
   const { notes, setNotes } = useNotes();
   const [creatorIsOpen, setCreatorIsOpen] = useState(false);
   const addButtonRef = useRef<HTMLButtonElement>(null);
@@ -17,8 +21,8 @@ export const Cards = () => {
   const openCreator = () => setCreatorIsOpen(true);
 
   const deleteCard = (iterator: number) => {
-    if (iterator <= notes.local.length) {
-      notes.local.splice(iterator, 1);
+    if (iterator <= notes[activeTab].length) {
+      notes[activeTab].splice(iterator, 1);
     }
 
     setNotes({ ...notes });
@@ -35,11 +39,11 @@ export const Cards = () => {
       </button>
 
       <Modal isOpen={creatorIsOpen} onClose={closeCreator} background="dark">
-        <Creator onClose={closeCreator} />
+        <Creator onClose={closeCreator} activeTab={activeTab} />
       </Modal>
 
       <div className={css.cardWrapper}>
-        {notes.local.map((note, i) => {
+        {notes[activeTab].map((note, i) => {
           return <Card {...note} deleteCard={() => deleteCard(i)} />;
         })}
       </div>
