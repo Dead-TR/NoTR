@@ -1,0 +1,19 @@
+@import "sass/index";
+
+.root {
+  padding: 5px;
+
+  max-width: $minimum-screen-width;
+  min-width: calc(#{$minimum-screen-width} - 100px);
+  height: 100%;
+  overflow: hidden;
+  transition: max-width $long-transition-time, min-width $long-transition-time,
+    padding $long-transition-time;
+
+  &__disabled {
+    max-width: 0;
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

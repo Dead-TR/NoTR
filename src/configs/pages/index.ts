@@ -10,10 +10,10 @@ export const appPageList: PageList[] = [
     path: "/",
     redirect: "/notes",
   },
-  {
-    path: "/main",
-    component: Main,
-  },
+  // {
+  //   path: "/main",
+  //   component: Main,
+  // },
   {
     path: "*",
     component: ErrorPage,

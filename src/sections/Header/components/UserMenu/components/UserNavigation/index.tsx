@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect } from "react";
 
 import { PopUpMenu } from "pop-ups";
 import { useUser } from "providers";
-import { Img } from "components";
+import { Img, UserName } from "components";
 
 import logOutIconUrl from "assets/icons/log-out.svg";
 
@@ -38,14 +38,7 @@ export const UserNavigation: FC<Props> = ({ anchor, isOpen, onClose }) => {
     >
       {user && (
         <div className={css.root}>
-          <div className={css.user}>
-            <Img
-              src={user?.photoURL || ""}
-              alt="user"
-              className={css.user_avatar}
-            />
-            <p className={css.user_name}>{user?.displayName}</p>
-          </div>
+          <UserName />
 
           <div className={css.navigation}>
             <NavElement

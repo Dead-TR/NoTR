@@ -1,21 +1,30 @@
 import clsx from "clsx";
-import React, { FC, useEffect, useMemo, useRef, useState } from "react";
-import { PopUpWrapper } from "pop-ups";
+import React, { FC, useEffect, useMemo, useState } from "react";
+import { PopUpFrameBackground, PopUpWrapper } from "pop-ups";
 import { createGuard } from "utils";
+
 import css from "./style.module.scss";
 
 interface Props {
   anchor?: HTMLElement | Element | null;
   isOpen: boolean;
   onClose: () => void;
+  background?: PopUpFrameBackground;
 }
 
-export const PopUpMenu: FC<Props> = ({ children, anchor, isOpen, onClose }) => {
+export const PopUpMenu: FC<Props> = ({
+  children,
+  anchor,
+  isOpen,
+  onClose,
+  background = "transparent",
+}) => {
   const [rootElement, setRootElement] = useState<HTMLDivElement | null>(null);
   const [isClosed, setIsClosed] = useState(true);
 
   const menuPosition = useMemo(() => {
     const elementGuard = createGuard<HTMLElement>("offsetLeft");
+
     if (anchor && elementGuard(anchor) && rootElement) {
       let top = anchor.offsetTop + anchor.offsetHeight;
       let left = anchor.offsetLeft + anchor.offsetWidth / 2;
@@ -67,7 +76,7 @@ export const PopUpMenu: FC<Props> = ({ children, anchor, isOpen, onClose }) => {
   }
 
   return (
-    <PopUpWrapper background="transparent" frameOnClick={onClose}>
+    <PopUpWrapper background={background} frameOnClick={onClose}>
       <div
         onAnimationEnd={endAnimation}
         ref={(node) => setRootElement(node)}
